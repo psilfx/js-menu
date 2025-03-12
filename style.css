@@ -1,0 +1,93 @@
+:root{
+	/* Размер меню */
+	--menu-width: 250px;
+	/* Скорость анимации */
+	--transition-time: 0.3s;
+	/* Цвет меню */
+	--menu-color: black;
+	/* Цвет боди */
+	--body-color: yellow;
+}
+html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+body{
+	overflow-x: hidden;
+}
+li {
+	list-style: none;
+}
+.body{
+	width:100%;
+	height:100%;
+	background-color: var(--body-color);
+}
+.menu-switch{
+	background-color: transparent;
+	position: absolute;
+	width: 60px;
+	height: 100%;
+	left: 0;
+	top: 0;
+	text-align: center;
+	padding-top: 18px;
+	box-sizing: border-box;
+	transition: all var(--transition-time) ease;
+}
+.menu-switch{
+	cursor: pointer;
+}
+.menu-switch span{
+	display: block;
+	background-color: #131313;
+	height: 3px;
+	width: calc( 100% - 20px );
+	margin: 0 auto;
+	margin-bottom: 7px;
+	position: relative;
+	top: 0;
+	transform: rotate(0);
+	opacity: 1;
+	transition: all 0.5s ease;
+}
+.menu-active .menu-switch span:nth-child(1){
+	transform: rotate(225deg);
+	top: 9px;
+}
+.menu-active .menu-switch span:nth-child(2){
+	opacity: 0;
+	transition: all 0.3s ease;
+}
+.menu-active .menu-switch span:nth-child(3){
+	transform: rotate(-225deg);
+	top: -10px;
+}
+.menu-active .menu-switch{
+	left: var(--menu-width);
+}
+.body{
+	padding-left: 0;
+	transition: all 0.3s ease;
+}
+.menu-active .body{
+	padding-left: var(--menu-width);
+}
+.push-menu {
+	width: var(--menu-width);
+	background-color: var(--menu-color);
+	position: fixed;
+	height: 100%;
+	left: calc( var(--menu-width) * -1 );
+	top: 0;
+	transition: all var(--transition-time) ease;
+}
+.push-menu ul li {
+	font-size: 30px;
+	color: white;
+	font-family: Roboto;
+}
+.menu-active .push-menu{
+	left: 0;
+}
